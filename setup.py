@@ -21,11 +21,11 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'Development Status :: 3 - Alpha',
-        'License :: MIT License',
+        'License :: OSI Approved :: MIT License',
 
         'Operating System :: OS Independent',
         'Environment :: Web Environment',
-        'Topic :: System :: Security',
+        'Topic :: Security',
         'Topic :: Software Development :: Libraries :: Python Modules',
 
         'Programming Language :: Python',
