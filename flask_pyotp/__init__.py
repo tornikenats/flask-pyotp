@@ -3,12 +3,12 @@ from flask import request, Response
 
 
 class PyOTP():
-    def __init__(self, app=None):
+    def __init__(self, app=None, **kwargs):
         self.app = app
         if app is not None:
-            self.init_app(app)
+            self.init_app(app, **kwargs)
 
-    def init_app(self, app, config_prefix='PYOTP'):
+    def init_app(self, app, config_prefix='PYOTP', **kwargs):
         def key(suffix):
             return '%s_%s' % (config_prefix, suffix)
 
@@ -19,9 +19,9 @@ class PyOTP():
         self.otp_type = app.config.get(key('OTP_TYPE'), 'TOTP')
 
         if self.otp_type == 'TOTP':
-            self.totp = pyotp.TOTP(secret_key)
+            self.totp = pyotp.TOTP(secret_key, **kwargs)
         elif self.otp_type == 'HOTP':
-            self.hotp = pyotp.HOTP(secret_key)
+            self.hotp = pyotp.HOTP(secret_key, **kwargs)
 
     def now(self):
         check_type('HOTP')
